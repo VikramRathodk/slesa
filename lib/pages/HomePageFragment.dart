@@ -1,5 +1,6 @@
 import 'package:Note/utility/notecard.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import '../models/NotesCategories.dart';
 
 class HomePageFragment extends StatefulWidget {
@@ -21,6 +22,7 @@ class _HomePageFragmentState extends State<HomePageFragment>
     NotesCategories(CategoryId: "8", CategoryName: "Shopping"),
     NotesCategories(CategoryId: "9", CategoryName: "Health"),
   ];
+  bool status = false;
 
   @override
   void initState() {
@@ -44,7 +46,11 @@ class _HomePageFragmentState extends State<HomePageFragment>
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 IconButton(
-                  icon: Icon(Icons.add, color: Colors.black,size: 32,),
+                  icon: Icon(
+                    Icons.add,
+                    color: Colors.black,
+                    size: 32,
+                  ),
                   onPressed: () {
                     //navigation to add new note
                   },
@@ -96,7 +102,8 @@ class _HomePageFragmentState extends State<HomePageFragment>
                     return NoteCard(
                       title: "Item ${index + 1}",
                       content:
-                          'Lorem ipsum dolor sit amfsfsffa afkja fkjaf lkajflkjaf kljalkfjlkajflkjfj et, f fs sffsf sf afakjf lkjafakfja foiafoiuf aoifuoiaufoi uafoiuof sfsfsfsadipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', onDelete: (){},
+                          'Lorem ipsum dolor sit amfsfsffa afkja fkjaf lkajflkjaf kljalkfjlkajflkjfj et, f fs sffsf sf afakjf lkjafakfja foiafoiuf aoifuoiaufoi uafoiuof sfsfsfsadipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                      onDelete: () {},
                     );
                   },
                 );
