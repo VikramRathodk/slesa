@@ -11,7 +11,9 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+    final VoidCallback toggleTheme;
+
+  const HomePage({super.key,required this.toggleTheme});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -34,8 +36,6 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             DrawerHeader(
-              decoration:
-                  BoxDecoration(color: Color.fromARGB(255, 255, 255, 255)),
               child: Row(
                 children: [
                   CircleAvatar(
@@ -48,34 +48,30 @@ class _HomePageState extends State<HomePage> {
                     child: ListTile(
                       title: Text(
                         "Header Drawer",
-                        style: TextStyle(
-                            color: const Color.fromARGB(255, 24, 1, 1)),
                       ),
                     ),
                   ),
-                  FlutterSwitch(
-                    width: 65.0,
-                    height: 30.0,
-                    valueFontSize: 15.0,
-                    toggleSize: 15.0,
-                    value: status,
-                    borderRadius: 10.0,
-                    duration: Duration(milliseconds: 200),
-                    showOnOff: true,
-                    onToggle: (val) {
-                      setState(() {
-                        status = val;
-                        
-                      });
-                    },
-                  ),
+                  // FlutterSwitch(
+                  //   width: 65.0,
+                  //   height: 30.0,
+                  //   valueFontSize: 15.0,
+                  //   toggleSize: 15.0,
+                  //   value: status,
+                  //   borderRadius: 10.0,
+                  //   duration: Duration(milliseconds: 200),
+                  //   showOnOff: true,
+                  //   onToggle: (val) {
+                  //     setState(() {
+                  //       status = val;
+                  //     });
+                  //   },
+                  // ),
                 ],
               ),
             ),
             Container(
               margin: EdgeInsets.only(top: 2.0),
               decoration: BoxDecoration(
-                color: Colors.white,
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(4),
                   bottom: Radius.circular(4),
@@ -97,7 +93,6 @@ class _HomePageState extends State<HomePage> {
                 top: 2.0,
               ),
               decoration: BoxDecoration(
-                color: Colors.white,
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(4),
                   bottom: Radius.circular(4),
@@ -117,7 +112,6 @@ class _HomePageState extends State<HomePage> {
             Container(
               margin: EdgeInsets.only(top: 2.0),
               decoration: BoxDecoration(
-                color: Colors.white,
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(4),
                   bottom: Radius.circular(4),
@@ -151,9 +145,17 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: _buildFragment(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          widget.toggleTheme();
+        },
+        child: Icon(Icons.lightbulb),
+      ),
       bottomNavigationBar: GNav(
-        activeColor: Colors.blue,
-        backgroundColor: Colors.white,
+        gap: 2,
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        haptic: true,
+        curve: Curves.easeOutExpo,
         tabs: [
           GButton(
             icon: Icons.home,

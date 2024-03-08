@@ -48,7 +48,6 @@ class _HomePageFragmentState extends State<HomePageFragment>
                 IconButton(
                   icon: Icon(
                     Icons.add,
-                    color: Colors.black,
                     size: 32,
                   ),
                   onPressed: () {
@@ -65,7 +64,6 @@ class _HomePageFragmentState extends State<HomePageFragment>
             padding: EdgeInsets.symmetric(horizontal: 0.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.grey[100],
             ),
             child: TabBar(
               controller: _tabController,
@@ -76,7 +74,6 @@ class _HomePageFragmentState extends State<HomePageFragment>
                     (e) => Container(
                       height: 40,
                       decoration: BoxDecoration(
-                          color: Colors.white,
                           borderRadius: BorderRadius.circular(8.0)),
                       padding: EdgeInsets.symmetric(horizontal: 24.0),
                       child: Tab(text: e.CategoryName),

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 
 class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
@@ -7,7 +9,7 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
 
   @override
   State<MyAppBar> createState() => _MyAppBarState();
-  
+
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
@@ -18,10 +20,10 @@ class _MyAppBarState extends State<MyAppBar> {
     return AppBar(
       title: Text(
         "Slesa",
-        style: TextStyle(color: Colors.white),
+        style: Theme.of(context).appBarTheme.titleTextStyle,
       ),
       leading: IconButton(
-        icon: Icon(Icons.menu, color: Colors.white),
+        icon: Icon(Icons.menu),
         onPressed: () {
           if (widget.scaffoldKey.currentState != null) {
             if (widget.scaffoldKey.currentState!.isDrawerOpen) {
@@ -32,14 +34,11 @@ class _MyAppBarState extends State<MyAppBar> {
           }
         },
       ),
-      backgroundColor: Colors.blue.shade300,
       centerTitle: true,
       actions: [
-        CircleAvatar(
-          backgroundColor: Colors.white,
-          child: Image(
-            image: AssetImage('assets/images/notification-bell.png'),
-          ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(Icons.notifications, size: 30),
         )
       ],
     );

@@ -1,9 +1,11 @@
+import 'package:Note/Themes/theme.dart';
 import 'package:Note/homepage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -12,15 +14,22 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  bool _isDarkMode = false;
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: _isDarkMode ? ThemeClass.darkTheme : ThemeClass.lightTheme,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.blue.shade300,
+      home:  HomePage(
+        toggleTheme: () {
+          setState(() {
+            _isDarkMode = !_isDarkMode;
+          });
+        },
       ),
-      home: HomePage(),
-
+  
     );
   }
 }
